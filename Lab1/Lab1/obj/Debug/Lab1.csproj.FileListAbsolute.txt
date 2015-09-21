@@ -1,0 +1,9 @@
+C:\Users\Пользователь\Documents\!ВУЗ\2 курс\Вычислительная математика\Лабы\Лаб1\Lab1\Lab1\bin\Debug\Lab1.exe.config
+C:\Users\Пользователь\Documents\!ВУЗ\2 курс\Вычислительная математика\Лабы\Лаб1\Lab1\Lab1\bin\Debug\Lab1.exe
+C:\Users\Пользователь\Documents\!ВУЗ\2 курс\Вычислительная математика\Лабы\Лаб1\Lab1\Lab1\bin\Debug\Lab1.pdb
+C:\Users\Пользователь\Documents\!ВУЗ\2 курс\Вычислительная математика\Лабы\Лаб1\Lab1\Lab1\obj\Debug\Lab1.csprojResolveAssemblyReference.cache
+C:\Users\Пользователь\Documents\!ВУЗ\2 курс\Вычислительная математика\Лабы\Лаб1\Lab1\Lab1\obj\Debug\Lab1.exe
+C:\Users\Пользователь\Documents\!ВУЗ\2 курс\Вычислительная математика\Лабы\Лаб1\Lab1\Lab1\obj\Debug\Lab1.pdb
+C:\Users\Пользователь\Documents\!ВУЗ\2 курс\Вычислительная математика\GitHub\compMath\Lab1\Lab1\bin\Debug\Lab1.exe.config
+C:\Users\Пользователь\Documents\!ВУЗ\2 курс\Вычислительная математика\GitHub\compMath\Lab1\Lab1\obj\Debug\Lab1.exe
+C:\Users\Пользователь\Documents\!ВУЗ\2 курс\Вычислительная математика\GitHub\compMath\Lab1\Lab1\obj\Debug\Lab1.pdb
