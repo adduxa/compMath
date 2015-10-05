@@ -17,7 +17,7 @@ namespace Lab1 {
 		private bool _randomFill;
 		private bool _useFile;
 
-		public double E = 0.001;
+		public double E = 0.0001;
 
 		public double[,] Matrix;
 
@@ -71,7 +71,7 @@ namespace Lab1 {
 					Console.WriteLine(e.Message);
 				}
 				E = _fileReader.E;
-				Console.WriteLine("Введённая точность вычислений: [{0}] ", E);
+				Console.WriteLine("Введённая точность вычислений: {0}", E);
 				_dimensions = _fileReader.Dimensions - 1;
 				Matrix = new double[_dimensionl, _dimensionc];
 			} else {
@@ -79,7 +79,7 @@ namespace Lab1 {
 				answer = Console.ReadLine();
 				if(answer != "") {
 					ReadInt(out _dimensions, postError: "Введите количество неизвестных: ",
-						error: "Некорректное значение! Ожидается ввод положительного целого числа", negative: false, zero: false);
+						error: "Некорректное значение! Ожидается ввод положительного целого числа", negative: false, zero: false, str: answer);
 				}
 				Matrix = new double[_dimensionl, _dimensionc];
 
@@ -91,7 +91,7 @@ namespace Lab1 {
 				answer = Console.ReadLine();
 				if(answer != "") {
 					ReadDouble(out E, postError: "Введите точность: ",
-						error: "Некорректное значение! Ожидается ввод положительного вещественного числа", negative: false);
+						error: "Некорректное значение! Ожидается ввод положительного вещественного числа", negative: false, str: answer);
 				}
 			}
 
@@ -162,23 +162,23 @@ namespace Lab1 {
 
 		public bool ReadInt(out int var, string message = "",
 			string error = "Некорректное значение! Ожидается ввод целого числа", string postError = null, bool negative = true,
-			bool zero = true) {
+			bool zero = true, string str = null) {
 			var res = true;
 			if(postError == null) {
 				postError = message;
 			}
 			Console.Write(message);
-			while(!int.TryParse(Console.ReadLine(), out var) || !negative && var < 0 || !zero && var == 0) {
+			while(!int.TryParse(str ?? Console.ReadLine(), out var) || !negative && var < 0 || !zero && var == 0) {
 				res = false;
+				str = null;
 				Console.WriteLine(error);
 				Console.Write(postError);
 			}
 			return res;
 		}
 
-		public bool ReadDouble(out double var, string message = "",
-			string error = "Некорректное значение! Ожидается ввод вещественного числа", string postError = null,
-			string decimalSeparator = null, string negativeSign = null, bool negative = true) {
+		public bool ReadDouble(out double var, string message = "", string error = "Некорректное значение! Ожидается ввод вещественного числа", string postError = null,
+			string decimalSeparator = null, string negativeSign = null, bool negative = true, string str = null) {
 			var res = true;
 			postError = postError ?? message;
 			decimalSeparator = decimalSeparator ?? NumberFormatInfo.CurrentInfo.CurrencyDecimalSeparator;
@@ -202,7 +202,7 @@ namespace Lab1 {
 					err = true;
 				}
 
-				var match = Regex.Match(Console.ReadLine(), pattern);
+				var match = Regex.Match(str ?? Console.ReadLine(), pattern);
 				var number = rgx.Replace(match.Value, decimalSeparator);
 
 				done = double.TryParse(number, out var);

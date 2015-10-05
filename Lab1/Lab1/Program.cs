@@ -5,7 +5,7 @@ namespace Lab1 {
 	internal class Program {
 		private static ConsoleHelpers _io;
 		private static SimpleIterations _si;
-		private const bool Debag = false;
+		private const bool Debug = false;
 
 		private static int Main(string[] args) {
 			_io = new ConsoleHelpers();
@@ -18,28 +18,42 @@ namespace Lab1 {
 
 			_si = new SimpleIterations(_io.Matrix);
 
-			_si.MakeDiagonal();
-			Console.WriteLine("Преобразованная матрица:");
-			_io.WriteMatrix(_si.Matrix);
+			var isDiagonallyDominant = _si.IsDiagonallyDominant(_si.Matrix);
+            Console.WriteLine("Матрица {0}обладает {1}диагональным преобладанием", isDiagonallyDominant.Soft ? "" : "не ", isDiagonallyDominant.Strict ? "строгим " : "");
+			Console.WriteLine("Коэффициенты сходимости:");
+			_io.WriteVectorHorizontally(_si.CalculateAlphas(_si.Matrix), "");
 			Console.WriteLine();
+
+			if(!isDiagonallyDominant.Soft) {
+				_si.MakeDiagonal();
+				Console.WriteLine("Преобразованная матрица:");
+				_io.WriteMatrix(_si.Matrix);
+				Console.WriteLine();
+				Console.WriteLine("Коэффициенты сходимости:");
+				_io.WriteVectorHorizontally(_si.CalculateAlphas(_si.Matrix), "");
+				Console.WriteLine();
+			}
 
 			_si.ExpressVariables();
 			Console.WriteLine("Выраженные неизвестные:");
 			_io.WriteMatrix(_si.ExpressedMatrix);
 			Console.WriteLine();
-
+			Console.WriteLine("Коэффициенты сходимости:");
+			_io.WriteVectorHorizontally(_si.CalculateAlphas(_si.ExpressedMatrix), "");
+			Console.WriteLine();
+			/*
 			Console.WriteLine("Матрица {0}обладает диагональным преобладанием", _si.IsDiagonallyDominant() ? "" : "не ");
 			Console.WriteLine("Коэффициенты сходимости:");
 			_io.WriteVectorHorizontally(_si.Alphas, "");
 			Console.WriteLine();
-
+			*/
 			_si.SetInitialVector();
 			Console.WriteLine("Вектор начальных значений:");
 			_io.WriteVectorHorizontally(_si.InitialVector);
 			Console.WriteLine();
 
 			try {
-				if(!Debag) {
+				if(!Debug) {
 					_si.Begin(_io.E);
 				} else {
 					do {
@@ -60,6 +74,10 @@ namespace Lab1 {
 
 				Console.WriteLine("Последняя разность значений:");
 				_io.WriteVectorHorizontally(_si.Differences);
+				Console.WriteLine();
+
+				Console.WriteLine("Погрешности последнего вычисления:");
+				_io.WriteVectorHorizontally(_si.Errors);
 				Console.WriteLine();
 
 				Console.WriteLine("Максимальная погрешность: {0}", _si.MaxError);
