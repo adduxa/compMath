@@ -33,6 +33,7 @@ namespace Lab2 {
 			var functions = new List<Func>();
 			functions.Add(new Func("y = 2", x => 2));
 			functions.Add(new Func("y = x", x => x));
+			functions.Add(new Func("y = Log10(x^e)", x => Math.Log10(Math.Pow(x,Math.E))));
 			functions.Add(new Func("y = x^2", x => Math.Pow(x, 2)));
 			functions.Add(new Func("y = sin(x)", x => Math.Sin(x)));
 

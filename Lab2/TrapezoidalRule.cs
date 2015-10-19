@@ -5,6 +5,7 @@ namespace Lab2 {
 		private const long InitialSegments = 10;
 
 		public CalculationResult Calculate(Func func, double begin, double end, double accuracy) {
+			var sign = Math.Sign(end - begin);
 			double[] temp = {Math.Min(begin, end), Math.Max(begin, end)};
 			begin = temp[0];
 			end = temp[1];
@@ -21,7 +22,7 @@ namespace Lab2 {
 				}
 				res *= h;
 			} while((Math.Abs(res - prevRes))/3 > accuracy);
-
+			res *= sign;
 			return new CalculationResult(res, segments, (Math.Abs(res - prevRes))/3);
 		}
 
