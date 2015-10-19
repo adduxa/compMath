@@ -22,8 +22,9 @@ namespace Lab2 {
 				}
 				res *= h;
 			} while((Math.Abs(res - prevRes))/3 > accuracy);
+			var acc = (Math.Abs(res - prevRes)) / 3;
 			res *= sign;
-			return new CalculationResult(res, segments, (Math.Abs(res - prevRes))/3);
+            return new CalculationResult(res, segments, acc);
 		}
 
 		public struct CalculationResult {
